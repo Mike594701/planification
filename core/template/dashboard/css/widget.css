@@ -1,0 +1,515 @@
+/* Fontes utilisées */
+
+
+
+
+.cercle_ext {
+    position: relative;
+    left: 20px;
+    top: 20px;
+    border: 3px solid #333;
+    height: 260px;
+    width: 260px;
+    -moz-border-radius: 350px;
+    border-radius: 350px;
+    -webkit-border-radius: 350px;
+    /* Permet de mettre un dégradé sur le cercle en fonction de tous les navigateurs */
+    background: -webkit-radial-gradient(top left, ellipse cover, #eaeaea 0%, #eaeaea 11%, #0e0e0e 61%);
+    /* Chrome10+,Safari5.1+ */
+    background: -moz-radial-gradient(top left, ellipse cover, #eaeaea 0%, #eaeaea 11%, #0e0e0e 61%);
+    /* FF3.6+ */
+    background: -webkit-gradient(radial, top left, 0px, top left, 100%, color-stop(0%, #eaeaea), color-stop(11%, #eaeaea), color-stop(61%, #0e0e0e));
+    /* Chrome,Safari4+ */
+    background: -o-radial-gradient(top left, ellipse cover, #eaeaea 0%, #eaeaea 11%, #0e0e0e 61%);
+    /* Opera 12+ */
+    background: -ms-radial-gradient(top left, ellipse cover, #eaeaea 0%, #eaeaea 11%, #0e0e0e 61%);
+    /* IE10+ */
+    background: radial-gradient(top left, ellipse cover, #eaeaea 0%, #eaeaea 11%, #0e0e0e 61%);
+    /* W3C */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#eaeaea', endColorstr='#0e0e0e', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+    /* Permet de ne pas pouvoir être sélectionné */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.gauche{
+    height: 80px;
+}
+.droite{
+    height: 90px;
+}
+.Thermostat {
+    position: relative;
+    background-image: url(../images/Thermostat/fond.png);
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 300px;
+    transform: scale(0.3) !important;
+    transform-origin: top left;
+    top: calc(50% - 45px);
+    /* Permet de replir la totalité de la zone */
+    background-size: cover;
+    /* Permet de ne pas pouvoir être sélectionné */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* Le cercle interne  */
+
+.cercle_int {
+    position: relative;
+    left: 17px;
+    top: 17px;
+    height: 220px;
+    width: 220px;
+    -moz-border-radius: 220px;
+    border-radius: 220px;
+    -webkit-border-radius: 220px;
+    /* Dégradé circulaire */
+    background: #0338ac;
+    /* Chrome10+,Safari5.1+ */
+    /* Permet de ne pas pouvoir être sélectionné */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.Temperature_consigne {
+    position: relative;
+    top: 10px;
+    left: -10px;
+   
+    font-size: 60px;
+    color: #ffffff;
+    /* Permet de ne pas pouvoir être sélectionné */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+}
+
+
+/*@media screen and (min-device-width: 600px) and (max-device-width: 900px) {
+	.Temperature_consigne {
+		position:relative;
+		top:10px;
+		left:-10px;
+		
+		font-size: 20px;
+		color:#ffffff;
+		/* Permet de ne pas pouvoir être sélectionné 
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		text-align: center;
+	}
+}
+*/
+
+.Temperature_ambiante {
+    position: relative;
+    top: 10px;
+    left: -10px;
+    
+    font-size: 30px;
+    color: #ffffff;
+    /* Permet de ne pas pouvoir être sélectionné */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+}
+
+
+/*@media screen and (min-device-width: 600px) and (max-device-width: 700px) {
+	.Temperature_actuelle {
+		position:relative;
+		top:10px;
+		left:-10px;
+		
+		font-size: 10px;
+		color:#ffffff;
+		 Permet de ne pas pouvoir être sélectionné 
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		text-align: center;
+	}
+}
+
+*/
+
+.Nom_Temperature_consigne {
+    position: relative;
+    top: 20px;
+    left: -10px;
+ 
+    font-size: 30px;
+    color: #ffffff;
+    /* Permet de ne pas pouvoir être sélectionné */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+}
+
+.monter_temperature {
+    width: 100%;
+    height: 110px;
+    position: absolute;
+    left: -10px;
+    top: -10px;
+}
+
+.descendre_temperature {
+    width: 100%;
+    height: 110px;
+    position: absolute;
+    left: -10px;
+    top: 100px;
+}
+
+
+/*@media screen and (min-device-width: 600px) and (max-device-width: 900px) {
+	.Nom_Temperature_consigne {
+		position:relative;
+		top:10px;
+		left:-10px;
+	
+		font-size: 5px;
+		color:#ffffff;
+		/* Permet de ne pas pouvoir être sélectionné 
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		text-align: center;
+	}
+}*/
+
+.Nom_temperature_ambiante {
+    position: relative;
+    top: 10px;
+    left: -10px;
+   
+    font-size: 15px;
+    color: #ffffff;
+    /* Permet de ne pas pouvoir être sélectionné */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+}
+
+
+/*@media screen and (min-device-width: 600px) and (max-device-width: 900px) {
+	.Nom_Temperature_actuelle {
+		position:relative;
+		top:10px;
+		left:-10px;
+		
+		font-size: 5px;
+		color:#ffffff;
+		/* Permet de ne pas pouvoir être sélectionné 
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		text-align: center;
+	}
+}*/
+
+.barres {
+    height: 212px;
+    margin: 0 auto;
+    position: relative;
+    top: 10px;
+    left: 2px;
+    width: 228px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.colorBar {
+    width: 15px;
+    height: 1px;
+    position: absolute;
+    opacity: 0;
+    background-color: #ffffff;
+    -moz-transition: 1s;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.colorBar.active {
+    opacity: 1;
+}
+@font-face {
+    font-family: Saira;
+    src: url(../fonts/Saira-Regular.ttf);
+}
+
+.consigne,
+.temperature {
+    font-family: 'Saira', sans-serif;
+    font-size: 4em;
+    line-height: 1.3em;
+    height: 53px;
+    clear: both;
+}
+.temperature {
+    padding-top: 10px;
+}
+
+.degre {
+    font-family: 'Saira', sans-serif;
+    font-size: 0.5em;
+    float: right;
+}
+
+.unit {
+    color: #959595;
+    font-size: 0.7em;
+    vertical-align: top;
+    float: right;
+}
+
+.temperature,
+.widget-name a,
+.temperature-ext,
+.hygrometrie {
+    color: #959595 !important;
+}
+
+.consigne {
+    color: rgb(201, 201, 201);
+    font-size: 38px;
+}
+.temperature{
+    font-size: 38px;
+}
+.temperature-ext,
+.hygrometrie
+{
+    width: 50%;
+}
+
+.temp-externe,
+.hygrometrie-div{
+    font-family: 'Saira', sans-serif;
+    clear: both;
+    float: right;
+    margin-right: 5px;
+    text-align: right;
+    color: #959595;
+}
+
+.temp-externe {
+    top: calc(100% - 3.5em - 10px);
+}
+
+.ico {
+    height: 16px;
+    width: 30%;
+    margin-right: 5px;
+    fill: #61B872;
+}
+
+
+
+
+
+.button-plus,
+.button-moins {
+    top: -10px;
+    line-height: 1em; 
+    font-family: 'Saira', sans-serif;
+    font-size: 2.5em;
+    margin-left: 5px;
+    float: left;
+    height: 10%;
+    width: 10%;
+    cursor: pointer;
+    color: #959595;
+    position: relative;
+}
+.button-moins {
+     top: -20px;
+}
+.button-plus:hover,
+.button-moins:hover {
+    color: #61B872;
+    fill: #61B872;
+}
+
+.thermo {
+    border: 1px solid #2D2D2D;
+    border-width: 2px 1px 1px 2px;
+    border-radius: 5px;
+    width: 66px;
+    height: 140px;
+    text-align: center;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+
+.mode-icon{
+    margin: 0 0 0 5px;
+    width: 20%;
+    height: 10%;
+    fill: #959595;
+    float: right;
+}
+
+.mode {
+    width: 66px;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+}
+.infos {
+    width: 60px;
+    position: absolute;
+    left:70%;
+    margin-top:10px;
+}
+
+
+.switch-off,
+.switch-on {
+    display: block;
+    text-align: center;
+}
+
+
+.mode-switch {
+    width: 35%;
+    height: 30px;
+    /* A refondre */
+}
+
+.mode-label {
+    width: 45%;
+    height: 25px;
+    /* A refondre */
+    line-height: 30px;
+    fill: #959595;
+}
+
+.mode-label-on {
+    fill: #61B872;
+}
+
+ .batterie-container{
+
+    display:block;
+    position:relative;
+    margin-top:5px;
+  }
+  .batterie-container.alerte{
+    animation: blinky-bat 1s linear  infinite;
+    margin-top:5px;
+  }
+  .batterie{
+    width: 50px;
+    height: 30px;
+    border: 2px solid green;
+    border-radius: 5px;
+    padding: 4px;
+    box-sizing: border-box;
+  }
+  .batterie-alert{
+    border: 2px solid red;;
+
+
+  }
+  .batterie-warning{
+    border: 2px solid orange;;
+  }
+  .batterie:after{
+    content: ' ';
+    background: green;
+    width: 5px;
+    height: 14px;
+    position: absolute;
+    left: 50px;
+    border-radius: 0px 2px 2px 0px;
+    margin-top:2px;
+  }
+  .batterie-alert:after{
+    background: red;
+  }
+
+  .batterie-warning:after{
+    background: orange;
+  }
+
+  .batterie-level{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 12px;
+    height: 100%;
+    vertical-align: middle;
+    line-height: 30px;
+    text-align: center;
+
+  }
+
+  .batterie-remplissage{
+    height:100%;
+    float: left;
+  }
+
+  .batterie-remplissage-alert {
+    background:red;
+  }
+
+  .batterie-remplissage-warning {
+    background:orange;
+  }
+
+  .batterie-remplissage-ok {
+    background:green;
+  }
+
+
+  @keyframes blinky-bat {
+    50% { opacity: 0; }
+  }

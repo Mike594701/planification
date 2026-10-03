@@ -1,0 +1,164 @@
+<div class="eqLogic eqLogic-widget allowResize allowReorderCmd #custom_layout# #class#" data-eqType="#eqType#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" data-translate-category="#translate_category#" data-category="#category#"
+    data-tags="#tags#" style="min-height:190px!important;min-width:130px!important;max-height:190px!important;max-width:130px!important;width: 130px;height:190px;">
+
+    <center class="object_name" style="overflow: hidden;padding-right:22px;padding-left:12px;font-weight:300;word-break: break-all;max-height:45px;font-size:16px;background-color: rgba(0,0,0,0.6);font-family:Arial;font-weight:normal;">
+        <a href="#eqLink#" class="reportModeHidden">#object_name#</a>
+    </center>
+    <center class="widget-name" style="margin-bottom: 0px;height: auto;white-space: normal;background-color: rgba(0,0,0,0.6)">
+        <a href="#eqLink#" class="reportModeHidden">#name_display#</a>
+    </center>
+        
+   
+    <div class="tuile" style="height:100%">
+        <div class="page_1 center" style="padding-top: 10px;margin: 0px;">
+
+            
+            <img class="img cmd cmd-widget" data-type="info" src='' style='height:90px' />
+            <span class="nom_eqLogic" style="display:none;position: absolute;top: 70px;width: 100%;color: black;font-weight: 300;font-size: 16px;">#name_display#</span>
+            
+            <span>
+                <img class="img_auto_manu cmd cmd-widget" data-type="info" src='' style="position: absolute;top: 25px;left:calc(50% + 10px);height:20px" /> 
+            </span>
+            <span>
+                <img class="img_batterie_gauche cmd cmd-widget" data-type="info" src='' style="position: absolute;top: 20px;left:calc(50% + 10px);height:25px" />   
+            </span>
+            <span>
+                <img class="img_batterie_droite cmd cmd-widget" data-type="info" src='' style="position: absolute;top: 20px;left:calc(50% + 10px);height:25px" />   
+            </span>
+           
+            <div>
+                <img class="ouvrir cmd cmd-widget cursor" data-type="action" src='plugins/planification/core/template/dashboard/images/Volet/bouton_ouvrir.png' style='position: relative;left: 5px;width:30px' />
+                <img class="my cmd cmd-widget cursor" data-type="action" src='plugins/planification/core/template/dashboard/images/Volet/bouton_my.png' style='display:none;width:30px' />
+                <img class="fermer cmd cmd-widget cursor" data-type="action" src='plugins/planification/core/template/dashboard/images/Volet/bouton_fermer.png' style='position: relative;right: 5px;width:30px' />
+            </div>
+             <div class="col-xs-12 center" style="margin:0px;padding-top: 10px!important;">
+                <select class="selectPlanification cmd cursor tooltips" style="top: calc(100% - 26px);position: relative;width:80%;color:white!important;border-radius: 10px!important" title="Choisir une planification">
+                    #calendar_selector#
+                </select>
+                <a class='bt_afficher_timepicker input-group-addon cursor tooltips' style="padding: 5px 12px!important;display:block;width:40px;color:white!important;border-radius: 10px!important;position:relative;" title="Choisir Fin">
+                    <span class="center fa fa-calendar" style="color:white"> 
+                        <input class="in_timepicker input-sm" style="position:absolute;left:30%;top:50%;height: 0px!important;width: 0px!important; padding: 0px!important;">
+                    </span>
+                </a>
+                <a class='planification_auto input-group-addon cursor tooltips' style="padding: 5px 12px!important;display:inline-block;width:40px;color:white!important;border-radius: 10px!important;position:relative;" title="Remettre la gestion de la planification en mode auto">
+                    <span class="center fas fa-sync" style="color:white"> </span>
+                </a>
+            </div>
+            <div class="prochaine_action tooltips" style="font-size: 0.9em;margin: 5px;color:white!important">
+                <span style="cursor:default;"></span>
+            </div>
+        </div>
+
+        
+        <span class="refresh cmd pull-right cursor" style="position: absolute;right: 0px;top:0px" data-cmd_id="#refresh_id#">
+            <i class="fas fa-sync"></i>
+        </span>
+        
+    </div>
+  
+    
+    <script>
+    
+(function() {
+
+    /* ============================================================
+       CHARGEMENT FACTORISÉ CSS + JS
+    ============================================================ */
+    function loadResource(url, callback) {
+        const isCSS = url.endsWith('.css');
+        const selector = isCSS ? `link[href="${url}"]` : `script[src="${url}"]`;
+
+        // Déjà chargé ?
+        if (document.querySelector(selector)) {
+            if (callback) callback();
+            return;
+        }
+        let el;
+        if (isCSS) {
+            el = document.createElement('link');
+            el.rel = 'stylesheet';
+            el.type = 'text/css';
+            el.href = url;
+        } else {
+            el = document.createElement('script');
+            el.src = url;
+            el.async = true;
+        }
+        el.onload = function() {
+            if (callback) callback();
+        };
+        el.onerror = function() {
+            console.error("Erreur chargement :", url);
+        };
+        document.head.appendChild(el);
+    }
+
+    /* ============================================================
+       ATTENTE DES FONCTIONS NÉCESSAIRES
+    ============================================================ */
+    function waitForFunctions(required, callback, attempt = 0) {
+        const ready = required.every(fn => typeof window[fn] === 'function');
+        if (ready) {
+            callback();
+        } else if (attempt < 200) { // 10 secondes max
+            setTimeout(function() {
+                waitForFunctions(required, callback, attempt + 1);
+            }, 50);
+        } else {
+            console.error("Timeout : fonctions non disponibles :", required);
+        }
+    }
+
+    /* ============================================================
+       CHARGEMENT CSS → JS → ATTENTE → AFFICHAGE WIDGET
+    ============================================================ */
+
+    loadResource('plugins/planification/core/template/dashboard/css/widget.css', function() {
+        loadResource('plugins/planification/core/template/dashboard/js/widget.js', function() {
+            waitForFunctions(
+                [
+                    'Affichage_widget',
+                    'Commun_widget',
+                    'SetWidget_Thermostat',
+                    'Maj_Thermostat'
+                ],
+                function() {
+                     var cmds_id = {
+                        premier_affichage: '#premier_affichage#',
+                        nom_eqlogic: '#nom_eqlogic#',
+                        auto_id: '#auto_id#',          	
+                        eqLogic_id: '#id#',
+                        eqLogic_uid:'#uid#',
+                        mode: '#mode#', mode_id: '#mode_id#',
+                        mode_planification : '#mode_planification#',
+                        etat: '#etat#', etat_id: '#etat_id#',
+                        action_en_cours:'#action_en_cours#',action_en_cours_id:'#action_en_cours_id#',
+                        action_suivante:'#action_suivante#',action_suivante_id:'#action_suivante_id#',
+                        calendar_selector: '#calendar_selector#',
+                        heure_fin: '#heure_fin#',heure_fin_id: '#heure_fin_id#',
+                        affichage_heure: '#affichage_heure#',
+                        planification_en_cours : '#planification_en_cours#', planification_en_cours_id: '#planification_en_cours_id#',
+                        info_widget:'#info_widget#',info_widget_id:'#info_widget_id#',
+                        set_heure_fin_id: '#set_heure_fin_id#',
+                        set_planification_id: '#set_planification_id#',
+                        niveau_batterie_gauche: '#niveau_batterie_gauche#', niveau_batterie_gauche_id: '#niveau_batterie_gauche_id#',
+                        ouverture_fenêtre_gauche : '#ouverture_fenêtre_gauche#',ouverture_fenêtre_gauche_id : '#ouverture_fenêtre_gauche_id#',
+                        niveau_batterie_droite : '#niveau_batterie_droite#',niveau_batterie_droite_id : '#niveau_batterie_droite_id#',
+                        ouverture_fenêtre_droite : '#ouverture_fenêtre_droite#',ouverture_fenêtre_droite_id : '#ouverture_fenêtre_droite_id#',
+                        sens_ouverture_fenêtre : '#sens_ouverture_fenêtre#',
+                        type_fenêtre : '#type_fenêtre#',
+                        ouvrir_id: '#ouvrir_id#',
+                        my_id: '#my_id#',
+                        fermer_id: '#fermer_id#',
+                        show_my : '#show_my#'
+                    };
+                    // Appel final
+                    Affichage_widget('#type_equipement#', cmds_id);
+                }
+            );
+        });
+    });
+})();  
+    </script>
+
+</div>

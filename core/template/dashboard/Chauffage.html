@@ -1,0 +1,156 @@
+<div class="eqLogic eqLogic-widget allowResize allowReorderCmd #custom_layout# #class#" data-eqType="#eqType#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" data-translate-category="#translate_category#" data-category="#category#"
+    data-tags="#tags#" style="min-height:220px!important;max-height:220px!important;max-width:145px!important;min-width:145px!important; width: 145px!important;">
+
+    <center class="object_name" style="overflow: hidden;padding-right:22px;padding-left:12px;font-weight:300;word-break: break-all;max-height:45px;font-size:16px;background-color: rgba(0,0,0,0.6);font-family:Arial;font-weight:normal;">
+        <a href="#eqLink#" class="reportModeHidden">#object_name#</a>
+    </center>
+    <center class="widget-name" style="margin-bottom: 0px;max-height:22px;">
+        <a href="#eqLink#" class="reportModeHidden">#name_display#</a>
+    </center>
+
+    
+
+    <div class="tuile center" >
+        
+          
+        <img class="img cmd cmd-widget " data-type="info" src='' style='height:75px;width:75px' />
+        <span class="nom_eqLogic" style="display:none;position: absolute;top: 60px;width: 100%;color: red;font-weight: 700;font-size: 16px;">#name_display#</span>
+        <span class="refresh cmd  pull-right cursor" style="position: absolute;right: 0px;top:0px" data-cmd_id="#refresh_id#">
+            <i class="fas fa-sync"></i>
+        </span>           
+        <span>
+            <img class="img_auto_manu cmd cmd-widget " data-type="info" src='' style="position: absolute;top: 25px;left:calc(50% + 10px);height:20px" />       
+        </span>
+         <span>
+            <img class="img_mode cmd cmd-widget " data-type="info" src='' style="position: absolute;top: 50px;left: 30px;height: 40px;"/>       
+        </span>           
+        <div class="center" style="width: 90%;margin: auto;padding-top:10px;">
+            <img class="confort cmd cmd-widget  cursor" data-type="action" src="plugins/planification/core/template/dashboard/images/Commun/bouton_confort.png" style="width:30px;">
+            <img class="eco cmd cmd-widget  cursor" data-type="action" src="plugins/planification/core/template/dashboard/images/Commun/bouton_eco.png" style="width:30px;position: relative;left: 0px;">
+            <img class="hors_gel cmd cmd-widget  cursor" data-type="action" src="plugins/planification/core/template/dashboard/images/Commun/bouton_hors_gel.png" style="width:30px;">
+            <img class="arret cmd cmd-widget  cursor" data-type="action" src="plugins/planification/core/template/dashboard/images/Commun/bouton_arret.png" style="width:30px;">
+        </div>
+        <div class="col-xs-12 center" style="margin:0px;padding-top: 10px!important;">
+            <select class="selectPlanification cmd cursor tooltips" style="top: calc(100% - 26px);position: relative;width:80%;color:white!important;border-radius: 10px!important" title="Choisir une planification">
+                #calendar_selector#
+            </select>
+            <a class='bt_afficher_timepicker input-group-addon cursor tooltips' style="padding: 5px 12px!important;display:block;width:40px;color:white!important;border-radius: 10px!important;position:relative;" title="Choisir Fin">
+                <span class="center fa fa-calendar" style="color:white"> 
+                    <input class="in_timepicker input-sm" style="position:absolute;left:30%;top:50%;height: 0px!important;width: 0px!important; padding: 0px!important;">
+                </span>
+            </a>
+            <a class='planification_auto input-group-addon cursor tooltips' style="padding: 5px 12px!important;display:inline-block;width:40px;color:white!important;border-radius: 10px!important;position:relative;" title="Remettre la gestion de la planification en mode auto">
+               <span class="center fas fa-sync" style="color:white"></span>
+            </a>
+        </div>
+        <div class="center prochaine_action tooltips" style="font-size: 0.9em;margin: 5px;color:white!important">
+            <span style="cursor:default;"></span>
+        </div> 
+        <div>
+        
+    
+    
+        
+        
+        </div>       
+        
+    </div>
+   
+    <script>
+(function() {
+
+    /* ============================================================
+       CHARGEMENT FACTORISÉ CSS + JS
+    ============================================================ */
+    function loadResource(url, callback) {
+        const isCSS = url.endsWith('.css');
+        const selector = isCSS ? `link[href="${url}"]` : `script[src="${url}"]`;
+
+        // Déjà chargé ?
+        if (document.querySelector(selector)) {
+            if (callback) callback();
+            return;
+        }
+        let el;
+        if (isCSS) {
+            el = document.createElement('link');
+            el.rel = 'stylesheet';
+            el.type = 'text/css';
+            el.href = url;
+        } else {
+            el = document.createElement('script');
+            el.src = url;
+            el.async = true;
+        }
+        el.onload = function() {
+            if (callback) callback();
+        };
+        el.onerror = function() {
+            console.error("Erreur chargement :", url);
+        };
+        document.head.appendChild(el);
+    }
+
+    /* ============================================================
+       ATTENTE DES FONCTIONS NÉCESSAIRES
+    ============================================================ */
+    function waitForFunctions(required, callback, attempt = 0) {
+        const ready = required.every(fn => typeof window[fn] === 'function');
+        if (ready) {
+            callback();
+        } else if (attempt < 200) { // 10 secondes max
+            setTimeout(function() {
+                waitForFunctions(required, callback, attempt + 1);
+            }, 50);
+        } else {
+            console.error("Timeout : fonctions non disponibles :", required);
+        }
+    }
+
+    /* ============================================================
+       CHARGEMENT CSS → JS → ATTENTE → AFFICHAGE WIDGET
+    ============================================================ */
+
+    loadResource('plugins/planification/core/template/dashboard/css/widget.css', function() {
+        loadResource('plugins/planification/core/template/dashboard/js/widget.js', function() {
+            waitForFunctions(
+                [
+                    'Affichage_widget',
+                    'Commun_widget',
+                    'SetWidget_Thermostat',
+                    'Maj_Thermostat'
+                ],
+                function() {
+                     var cmds_id = {
+                        premier_affichage: '#premier_affichage#',
+                        nom_eqlogic:'#nom_eqlogic#',
+                        auto_id: '#auto_id#',          	
+                        eqLogic_id: '#id#',
+                        eqLogic_uid:'#uid#',
+                        mode: '#mode#', mode_id: '#mode_id#',
+                        mode_planification : '#mode_planification#',
+                        etat: '#etat#', etat_id: '#etat_id#',
+                        action_en_cours:'#action_en_cours#',action_en_cours_id:'#action_en_cours_id#',
+                        action_suivante:'#action_suivante#',action_suivante_id:'#action_suivante_id#',
+                        calendar_selector: '#calendar_selector#',
+                        heure_fin: '#heure_fin#',heure_fin_id: '#heure_fin_id#',
+                        affichage_heure: '#affichage_heure#',
+                        planification_en_cours : '#planification_en_cours#', planification_en_cours_id: '#planification_en_cours_id#',
+                        set_heure_fin_id: '#set_heure_fin_id#',
+                        set_planification_id: '#set_planification_id#',
+                                    
+                        confort_id: '#confort_id#',
+                        eco_id : '#eco_id#',
+                        hors_gel_id : '#hg_id#',
+                        arret_id : '#arret_id#'
+                    };
+                    // Appel final
+                    Affichage_widget('#type_equipement#', cmds_id);
+                }
+            );
+        });
+    });
+})();
+    </script>
+
+</div>

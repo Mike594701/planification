@@ -1,0 +1,282 @@
+<div class="eqLogic eqLogic-widget allowResize allowReorderCmd #custom_layout# #class#" data-eqType="#eqType#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" data-translate-category="#translate_category#" data-category="#category#"
+    data-tags="#tags#" style="width: 200px; height: 240px; min-width: 200px; max-width: 200px; min-height: 240px !important; max-height: 240px !important; box-shadow: rgb(255, 255, 255) 0px 0px 1px 0.5px; touch-action: none;">
+
+    <center class="object_name" style="overflow: hidden;padding-right:22px;padding-left:12px;font-weight:300;word-break: break-all;max-height:45px;font-size:16px;background-color: rgb(0 0 0);font-family:Arial;font-weight:normal;">
+        <a href="#eqLink#" class="reportModeHidden">#object_name#</a>
+    </center>
+    <center class="widget-name" style="overflow: hidden;padding-right:22px;padding-left:12px;font-weight:300;word-break: break-all;max-height:45px;font-size:16px;background-color: rgb(0 0 0);font-family:Arial;font-weight:normal;">
+        <a href="#eqLink#" class="reportModeHidden">#name_display#</a>
+    </center>
+
+
+<div class="tuile" style="background-color: rgb(255 255 255 / 5%)">
+    <div style="height: 150px;">
+        <div class="mode">
+
+            <span class="auto switch-off">
+                <svg class="mode-label">
+                    <use xlink:href="plugins/planification/core/template/dashboard/images/Thermostat-zwave/images.svg#shape-icon-auto"></use>
+                </svg>
+                <svg class="mode-switch" data-cmd_id="#auto_id#">
+                    <use xlink:href="plugins/planification/core/template/dashboard/images/Thermostat-zwave/images.svg#shape-switch-off"></use>
+                </svg>
+            </span>
+
+            <span class="confort switch-off">
+                <svg class="mode-label">
+                    <use xlink:href="plugins/planification/core/template/dashboard/images/Thermostat-zwave/images.svg#shape-icon-confort"></use>
+                </svg>
+                <svg class="mode-switch" data-cmd_id="#confort_id#">
+                    <use xlink:href="plugins/planification/core/template/dashboard/images/Thermostat-zwave/images.svg#shape-switch-off"></use>
+                </svg>
+            </span>
+
+            <span class="eco switch-off">
+                <svg class="mode-label">
+                    <use xlink:href="plugins/planification/core/template/dashboard/images/Thermostat-zwave/images.svg#shape-icon-eco"></use>
+                </svg>
+                <svg class="mode-switch" data-cmd_id="#eco_id#">
+                    <use xlink:href="plugins/planification/core/template/dashboard/images/Thermostat-zwave/images.svg#shape-switch-off"></use>
+                </svg>
+            </span>
+
+            <span class="arret switch-off">
+                <svg class="mode-label mode-label-off">
+                    <use xlink:href="plugins/planification/core/template/dashboard/images/Thermostat-zwave/images.svg#shape-icon-off"></use>
+                </svg>
+                <svg class="mode-switch" data-cmd_id="#arret_id#">
+                    <use xlink:href="plugins/planification/core/template/dashboard/images/Thermostat-zwave/images.svg#shape-switch-off"></use>
+                </svg>
+            </span>
+
+        </div>
+
+        <div class="thermo">
+            <div class="button-plus" data-cmd_id="12880" data-cmd_val="19">+</div>
+
+            <div class="temperature #temperature-history#" data-cmd_id="#temperature_ambiante_id#">
+                <span>#temperature_ambiante_entier#</span>
+                <span class="degre">#temperature_ambiante_decimale#</span>
+            </div>
+
+            <div class="consigne #consigne-history#" data-cmd_id="#consigne_temperature_id#" consigne="#consigne_temperature#" min="#consigne_min#" max="#consigne_max#">
+                <span>#consigne_temperature_entier#</span>
+            </div>
+
+            <div class="button-moins" data-cmd_id="12880" data-cmd_val="19">-</div>
+
+            <svg class="mode-icon" data-cmd_id="12881">
+                <use xlink:href="plugins/planification/core/template/dashboard/images/Thermostat-zwave/images.svg#shape-icon-auto"></use>
+            </svg>
+        </div>
+
+        <div class="infos">           
+            <div class="temp-externe #temp-externe-history#" style="display:inline-flex">
+                <svg class="ico">
+                    <use xlink:href="plugins/planification/core/template/dashboard/images/Thermostat-zwave/images.svg#shape-icon-externe"></use>
+                </svg>
+                <div style="width:40px;float:right;">
+                    <!--<span class="temperature-ext" data-cmd_id="#temp_ext_id#">#temp_ext#</span>-->
+                    <span class="temperature-ext" data-cmd_id="#temp_ext_id">10</span>
+                    <span class="unit">°C</span>
+                </div>
+            </div>
+
+            <div class="hygrometrie-div #hygrometrie-history#" style="display:inline-flex">
+                <svg class="ico">
+                    <use xlink:href="plugins/planification/core/template/dashboard/images/Thermostat-zwave/images.svg#shape-icon-water"></use>
+                </svg>
+                <div style="width:40px;float:right;">
+                    <!--<span class="hygrometrie" data-cmd_id="#hygrometrie_id#">#hygrometrie#</span>-->
+                      <span class="hygrometrie" data-cmd_id="#hygrometrie_id#">10</span>
+                    <span class="unit">%</span>
+                </div>
+            </div>
+
+            <div class="poucentage-ouverture-div #poucentage-ouverture-history#" style="display:inline-flex">
+                <svg viewBox="0 0 36 36" width="50" height="50">
+
+                  
+                    <path
+                        stroke="#d0d0d0"
+                        stroke-width="3"
+                        fill="none"
+                        d="M18 2.0845
+                           a 15.9155 15.9155 0 0 1 0 31.831
+                           a 15.9155 15.9155 0 0 1 0 -31.831" />
+
+               
+                    <path
+                        stroke="#ff9f00"
+                        stroke-width="3"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-dasharray="#pourcentage_ouverture#, 100"
+                        d="M18 2.0845
+                           a 15.9155 15.9155 0 0 1 0 31.831
+                           a 15.9155 15.9155 0 0 1 0 -31.831" />
+
+                   
+                    <text x="18" y="20.35" font-size="8" text-anchor="middle" fill="#959595">
+                        #pourcentage_ouverture#%
+                    </text>
+
+                </svg>
+            </div>
+            <div class="poucentage-batterie-div #poucentage-batterie-history#" style="display:inline-flex">
+               <div class="batterie-container">
+                    <div class="batterie">
+                    <div class="batterie-remplissage"></div>
+                    </div>
+                    <div class="batterie-level"></div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+
+    </div>
+    <div class="center" style="margin:0px;padding-top:10px!important;">
+            <select class="selectPlanification cmd cursor tooltips"
+                    style="top:calc(100% - 26px);position:relative;width:80%;color:white!important;border-radius:10px!important"
+                    title="Choisir une planification">
+                #calendar_selector#
+            </select>
+
+            <a class="bt_afficher_timepicker input-group-addon cursor tooltips"
+               style="padding:5px 12px!important;display:block;width:40px;color:white!important;border-radius:10px!important;position:relative;"
+               title="Choisir Fin">
+                <span class="center fa fa-calendar" style="color:white">
+                    <input class="in_timepicker input-sm"
+                           style="position:absolute;left:30%;top:50%;height:0px!important;width:0px!important;padding:0px!important;">
+                </span>
+            </a>
+            <a class='planification_auto input-group-addon cursor tooltips' style="padding: 5px 12px!important;display:inline-block;width:40px;color:white!important;border-radius: 10px!important;position:relative;" title="Remettre la gestion de la planification en mode auto">
+               <span class="center fas fa-sync" style="color:white"></span>
+            </a>
+        </div>
+
+    <div class="center prochaine_action tooltips" style="font-size:0.9em;margin:5px;color:white!important">
+            <span style="cursor:default;"></span>
+        </div>
+</div>
+<script>
+
+(function() {
+
+    /* ============================================================
+       CHARGEMENT FACTORISÉ CSS + JS
+    ============================================================ */
+    function loadResource(url, callback) {
+        const isCSS = url.endsWith('.css');
+        const selector = isCSS ? `link[href="${url}"]` : `script[src="${url}"]`;
+
+        // Déjà chargé ?
+        if (document.querySelector(selector)) {
+            if (callback) callback();
+            return;
+        }
+        let el;
+        if (isCSS) {
+            el = document.createElement('link');
+            el.rel = 'stylesheet';
+            el.type = 'text/css';
+            el.href = url;
+        } else {
+            el = document.createElement('script');
+            el.src = url;
+            el.async = true;
+        }
+
+        el.onload = function() {
+            if (callback) callback();
+        };
+
+        el.onerror = function() {
+            console.error("Erreur chargement :", url);
+        };
+
+        document.head.appendChild(el);
+    }
+
+    /* ============================================================
+       ATTENTE DES FONCTIONS NÉCESSAIRES
+    ============================================================ */
+    function waitForFunctions(required, callback, attempt = 0) {
+        const ready = required.every(fn => typeof window[fn] === 'function');
+        if (ready) {
+            callback();
+        } else if (attempt < 200) { // 10 secondes max
+            setTimeout(function() {
+                waitForFunctions(required, callback, attempt + 1);
+            }, 50);
+        } else {
+            console.error("Timeout : fonctions non disponibles :", required);
+        }
+    }
+
+    /* ============================================================
+       CHARGEMENT CSS → JS → ATTENTE → AFFICHAGE WIDGET
+    ============================================================ */
+    loadResource('plugins/planification/core/template/dashboard/css/widget.css', function() {
+        loadResource('plugins/planification/core/template/dashboard/js/widget.js', function() {
+            waitForFunctions(
+                [
+                    'Affichage_widget',
+                    'Commun_widget',
+                    'SetWidget_Thermostat',
+                    'Maj_Thermostat'
+                ],
+                function() {
+                    var cmds_id = {
+                        premier_affichage: '#premier_affichage#',
+                        nom_eqlogic:'#nom_eqlogic#',
+                        auto_id: '#auto_id#',
+                        eqLogic_id: '#id#',
+                        eqLogic_uid:'#uid#',
+                        mode: '#mode#',
+                        mode_id: '#mode_id#',
+                        mode_planification : '#mode_planification#',
+                        etat: '#etat#',
+                        etat_id: '#etat_id#',
+                        action_en_cours:'#action_en_cours#',
+                        action_en_cours_id:'#action_en_cours_id#',
+                        action_suivante:'#action_suivante#',
+                        action_suivante_id:'#action_suivante_id#',
+                        calendar_selector: '#calendar_selector#',
+                        heure_fin: '#heure_fin#',
+                        heure_fin_id: '#heure_fin_id#',
+                        affichage_heure: '#affichage_heure#',
+                        planification_en_cours : '#planification_en_cours#',
+                        planification_en_cours_id: '#planification_en_cours_id#',
+                        set_heure_fin_id: '#set_heure_fin_id#',
+                        set_planification_id: '#set_planification_id#',
+                        consigne_temperature: '#consigne_temperature#',
+                        consigne_temperature_id: '#consigne_temperature_id#',
+                        temperature_ambiante : '#temperature_ambiante#',
+                        temperature_ambiante_id : '#temperature_ambiante_id#',
+                        consigne_min: '#consigne_min#',
+                        consigne_max: '#consigne_max#',
+                        set_consigne_temperature_id: '#set_consigne_temperature_id#',
+                        set_consigne_temperature_zwave_id: '#set_consigne_temperature_zwave_id#',
+                        confort_id: '#confort_id#',
+                        eco_id : '#eco_id#',
+                        arret_id : '#arret_id#',
+                        temp_ext_id : '#temp_ext_id#',
+                        hygrometrie_id : '#hygrometrie_id#',
+                        pourcentage_ouverture: '#pourcentage_ouverture#',
+                        pourcentage_ouverture_id: '#pourcentage_ouverture_id#',
+                        pourcentage_batterie: '#pourcentage_batterie#',
+                        pourcentage_batterie_id: '#pourcentage_batterie_id#'
+                    };
+
+                    // Appel final
+                    Affichage_widget('#type_equipement#', cmds_id);
+                }
+            );
+        });
+    });
+})();      
+
+</script>

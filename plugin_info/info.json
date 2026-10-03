@@ -1,0 +1,18 @@
+{
+    "id": "planification",
+    "name": "Planification",
+    "description": "Planification sous forme de semaine avec gestion lever/coucher de soleil",
+    "licence": "AGPL",
+    "author": "OZAER Michaël",
+    "require": "4.4",
+    "pluginVersion": "1.4",
+    "category": "automatisation",
+    "hasDependency": false,
+    "hasOwnDeamon": true,
+    "maxDependancyInstallTime": 0,
+    "changelog": "https://raw.githack.com/Famille-OZAER/planification/main/docs/changelog.html",
+    "changelog_beta": "https://raw.githack.com/Famille-OZAER/planification/main/docs/changelog.html",
+    "documentation": "https://raw.githack.com/Famille-OZAER/planification/main/docs/documentation.html",
+    "documentation_beta": "https://raw.githack.com/Famille-OZAER/planification/main/docs/documentation.html",
+    "compatibility": ["rpi", "v4"]
+}

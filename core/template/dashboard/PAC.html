@@ -1,0 +1,164 @@
+<div class="eqLogic eqLogic-widget allowResize allowReorderCmd #custom_layout# #class#" data-eqType="#eqType#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" data-translate-category="#translate_category#" data-category="#category#"
+    data-tags="#tags#" style="min-width:270px!important;max-width:270px!important;min-height:220px!important;max-height:220px!important;width: 270px;height: 1170px;">
+
+    <center class="object_name" style="overflow: hidden;padding-right:22px;padding-left:12px;font-weight:300;word-break: break-all;max-height:45px;font-size:16px;background-color: rgb(0 0 0);font-family:Arial;font-weight:normal;">
+        <a href="#eqLink#">#object_name#</a>
+    </center>
+    
+
+   
+   <div class="tuile" style="background-color: rgb(255 255 255 /5%);">
+
+        
+        <div class="col-xs-6 gauche" style="margin:0px;padding: 0px!important;">
+            <i class="boost cmd fa fa-fire  cursor tooltips" title="Activer le mode boost" style="position:relative;float:right;top: 50px;display:none;font-size: 1.9em;margin-left: 5px;color:white!important"></i>
+            <img class="img cmd cmd-widget" style="position:relative;top:calc(100% - 80px);float: right;height: 80px;" />
+            
+            <span>
+                <img class="img_auto_manu cmd cmd-widget" data-type="info" src='' style="position: absolute;top: 65px;right: 5px;height:20px" />       
+            </span>
+        </div>
+        <div class="col-xs-6 droite" style="margin:0px;padding: 0px!important;">
+            <div class="Thermostat"></div>
+        </div>
+        <div class="col-xs-12 center" style="margin:0px;padding-top: 10px!important;">
+            <i data-cmd_id="#arret_id#" class="Arrêt cmd fa fa-times cursor tooltips" title="Arrêter la planification." style="position: relative;top: calc(100% - 40px);font-size: 30px;margin-right: 7px;color:#3498db!important"></i>
+            <i data-cmd_id="#ventilation_id#" class="Ventilation cmd icon techno-ventilation cursor tooltips" title="Forçage de la planification en mode ventilation." style="position: relative;top: calc(100% - 40px);font-size: 30px;margin-right: 7px;color:#3498db!important"></i>
+            <i data-cmd_id="#chauffage_id#" class="Chauffage cmd icon nature-weather1 cursor tooltips" title="Forçage de la planification en mode chauffage." style="position: relative;left:2px;top: calc(100% - 40px);font-size:30px;margin-right: 7px;color:#3498db!important"></i>
+            <i data-cmd_id="#climatisation_id#" class="Climatisation cmd icon nature-snowflake cursor tooltips" title="Forçage de la planification mode climatisation." style="position: relative;top: calc(100% - 27px);font-size: 30px;margin-left: 2px;color:#3498db!important"></i>
+        </div>
+        <div class="col-xs-12 center" style="margin:0px;padding-top: 10px!important;">
+            <select class="selectPlanification cmd cursor tooltips" style="top: calc(100% - 26px);position: relative;width:80%;color:white!important;border-radius: 10px!important" title="Choisir une planification">
+                #calendar_selector#
+            </select>
+            <a class='bt_afficher_timepicker input-group-addon cursor tooltips' style="padding: 5px 12px!important;display:block;width:40px;color:white!important;border-radius: 10px!important;position:relative;" title="Choisir Fin">
+                <span class="center fa fa-calendar" style="color:white"> 
+                    <input class="in_timepicker input-sm" style="position:absolute;left:30%;top:50%;height: 0px!important;width: 0px!important; padding: 0px!important;">
+                </span>
+            </a>
+             <a class='planification_auto input-group-addon cursor tooltips' style="padding: 5px 12px!important;display:inline-block;width:40px;color:white!important;border-radius: 10px!important;position:relative;" title="Remettre la gestion de la planification en mode auto">
+               <span class="center fas fa-sync" style="color:white"></span>
+            </a>
+        </div>
+        
+        <div class="prochaine_action tooltips col-xs-12 center" style="font-size: 0.9em;margin: 5px;color:white!important">
+            <span style="cursor:default;"></span>
+        </div>
+        <span class="refresh cmd pull-right cursor" style="position: absolute;right: 0px;top:0px" data-cmd_id="#refresh_id#">
+            <i class="fas fa-sync"></i>
+        </span>
+      
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="plugins/planification/core/template/dashboard/css/widget.css" media="all" />
+    <script>
+   (function() {
+
+    /* ============================================================
+       CHARGEMENT FACTORISÉ CSS + JS
+    ============================================================ */
+    function loadResource(url, callback) {
+        const isCSS = url.endsWith('.css');
+        const selector = isCSS ? `link[href="${url}"]` : `script[src="${url}"]`;
+
+        // Déjà chargé ?
+        if (document.querySelector(selector)) {
+            if (callback) callback();
+            return;
+        }
+        let el;
+        if (isCSS) {
+            el = document.createElement('link');
+            el.rel = 'stylesheet';
+            el.type = 'text/css';
+            el.href = url;
+        } else {
+            el = document.createElement('script');
+            el.src = url;
+            el.async = true;
+        }
+
+        el.onload = function() {
+            if (callback) callback();
+        };
+
+        el.onerror = function() {
+            console.error("Erreur chargement :", url);
+        };
+
+        document.head.appendChild(el);
+    }
+
+    /* ============================================================
+       ATTENTE DES FONCTIONS NÉCESSAIRES
+    ============================================================ */
+    function waitForFunctions(required, callback, attempt = 0) {
+        const ready = required.every(fn => typeof window[fn] === 'function');
+        if (ready) {
+            callback();
+        } else if (attempt < 200) { // 10 secondes max
+            setTimeout(function() {
+                waitForFunctions(required, callback, attempt + 1);
+            }, 50);
+        } else {
+            console.error("Timeout : fonctions non disponibles :", required);
+        }
+    }
+
+    /* ============================================================
+       CHARGEMENT CSS → JS → ATTENTE → AFFICHAGE WIDGET
+    ============================================================ */
+    loadResource('plugins/planification/core/template/dashboard/css/widget.css', function() {
+        loadResource('plugins/planification/core/template/dashboard/js/widget.js', function() {
+            waitForFunctions(
+                [
+                    'Affichage_widget',
+                    'Commun_widget',
+                    'SetWidget_Thermostat',
+                    'Maj_Thermostat'
+                ],
+                function() {
+                    var cmds_id = {
+                        premier_affichage: '#premier_affichage#',
+                        nom_eqlogic: '#nom_eqlogic#',
+                        auto_id: '#auto_id#',       
+                        planification_auto_id: '#planification_auto_id#',
+                        eqLogic_id: '#id#',
+                        eqLogic_uid:'#uid#',
+                        mode: '#mode#', mode_id: '#mode_id#',
+                        mode_planification : '#mode_planification#',
+                        etat: '#etat#', etat_id: '#etat_id#',
+                        action_en_cours:'#action_en_cours#',action_en_cours_id:'#action_en_cours_id#',
+                        action_suivante:'#action_suivante#',action_suivante_id:'#action_suivante_id#',
+                        calendar_selector: '#calendar_selector#',
+                        heure_fin: '#heure_fin#',heure_fin_id: '#heure_fin_id#',
+                        affichage_heure: '#affichage_heure#',
+                        planification_en_cours : '#planification_en_cours#', planification_en_cours_id: '#planification_en_cours_id#',
+                        set_heure_fin_id: '#set_heure_fin_id#',
+                        set_planification_id: '#set_planification_id#',
+                    
+                        boost_on_id: '#boost_on_id#',
+                        boost_off_id: '#boost_off_id#',
+                        consigne_min: '#consigne_min#',
+                        consigne_max: '#consigne_max#',
+                        set_consigne_temperature_id: '#set_consigne_temperature_id#',
+                        climatisation_id: '#climatisation_id#',
+                        chauffage_id: '#chauffage_id#',
+                        arret_id: '#arret_id#',
+                        ventilation_id : '#ventilation_id#',
+                        consigne_temperature: '#consigne_temperature#',consigne_temperature_id: '#consigne_temperature_id#',
+                        temperature_ambiante : '#temperature_ambiante#',temperature_ambiante_id : '#temperature_ambiante_id#',
+                        boost: '#boost#',
+                        boost_id: '#boost_id#',
+                        type_pac:'#type_pac#'
+                    };
+
+                    // Appel final
+                    Affichage_widget('#type_equipement#', cmds_id);
+                }
+            );
+        });
+    });
+})();
+    </script>
+</div>
