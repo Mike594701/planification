@@ -346,15 +346,12 @@ document.getElementById('tab_eqlogic').addEventListener('click', function(event)
     const el = event.target.closest('div').querySelector('input');
     if (subType !=''){
       jeedom.cmd.getSelectModal({ cmd: { type, subType } }, function(result) {
-      
         el.value = result.human;
       });
     }else{
       jeedom.cmd.getSelectModal({ cmd: { type} }, function(result) {
-         
         el.value = result.human;
         if (show_alias){
-
           if( el.value != ''){
             target.closest('.option').querySelector('.alias').style.display='block'
           }else{
@@ -436,8 +433,6 @@ document.getElementById('tab_eqlogic').addEventListener('click', function(event)
   }
 });
 document.getElementById('tab_eqlogic').addEventListener('focusout', function(event) {
-  
-
   if (event.target.closest('.cmdAction')) {
     let _target = event.target.closest('.cmdAction');
     const div_alias = _target.closest('.option').querySelector(".alias");
@@ -772,7 +767,6 @@ document.getElementById('tab_planifications').addEventListener('focusout', funct
     }
   }
 });
-
 document.getElementById('tab_planifications').addEventListener('change', function(event) {
   if (event.target.closest('.select_lever_coucher')) {
     const selectElement = event.target.closest('.select_lever_coucher');
@@ -860,8 +854,6 @@ document.getElementById('tab_planifications').addEventListener('change', functio
   }
 });
 document.getElementById('tab_planifications').addEventListener('keydown', function(e) {
-
-
   if (e.target.closest('.in_timepicker')) {
     const adjustTimeForLeverCoucher = (_target, selector) => {
       _target=_target.closest(".well")
@@ -926,8 +918,6 @@ document.getElementById('tab_planifications').addEventListener('keydown', functi
 
   }
 });
-
-
 document.getElementById('tab_gestion_heures_lever_coucher').addEventListener('change', function(event) {
   const adjustTimeForLeverCoucher = (_target, selector) => {
     _target=_target.closest(".well")
@@ -995,10 +985,7 @@ document.getElementById('tab_gestion_heures_lever_coucher').addEventListener('cl
     }
   });
 });
-
 document.getElementById('tab_gestion_heures_lever_coucher').addEventListener('keydown', function(e) {
-
-
   if (e.target.closest('.in_timepicker')) {
     const adjustTimeForLeverCoucher = (_target, selector) => {
       _target=_target.closest(".well")
@@ -2042,11 +2029,7 @@ function Recup_liste_commandes_planification() {
   return COMMANDE_LIST;
 }
 function printEqLogic(_eqLogic) {
-  // Masquer les éléments spécifiques
-  
-
-    
-
+  // Masquer les éléments spécifiques aux autres types d'équipements
   [
     ".bt_image_défaut",
     ".Volet",
@@ -2069,7 +2052,6 @@ function printEqLogic(_eqLogic) {
   
   let img = _eqLogic.configuration.Chemin_image || "plugins/planification/core/img/autre.png";
   // Initialize variables
-  const nom_planification_erreur = [];
   const SELECT_LIST = Recup_select("planifications");
   const CMD_LIST = Recup_liste_commandes_planification();
 
@@ -2293,16 +2275,13 @@ function printEqLogic(_eqLogic) {
             document.querySelectorAll(`#div_planifications .planification`)[numéro_planification].querySelectorAll('.JourSemaine').forEach(div_jour => {
               périodes[div_jour.classList[1]].forEach(periode => {
                 if (!periode?.Type) return;
-
-                const cmdMatch = CMD_LIST.find(cmd => periode.Id === cmd.Id || periode.Id === cmd.Nom);
+                const cmdMatch = CMD_LIST.find(cmd => Number(periode.Id) === Number(cmd.Id) || periode.Id === cmd.Nom);
                 const Couleur = cmdMatch ? `couleur-${cmdMatch.couleur}` : "erreur";
                 const Nom = cmdMatch?.Nom || "";
                 const Id = cmdMatch?.Id || "";
-
                 let element = SELECT_LIST.replace("#COULEUR#", Couleur)
                 .replace("#VALUE#", Nom)
                 .replace("#ID#", Id);
-
                 Ajout_Periode(element, div_jour, periode.Début, periode.Id, periode.Type, _eqLogic.configuration.Type_équipement);
               });
 
@@ -3045,7 +3024,6 @@ function addCmdToTable(_cmd) {
       let enfant = tableau.querySelector("#table_chauffage");
       
       if (enfant) {
-        console.log(enfant)
         enfant.insertAdjacentHTML('beforeend', tr);
         const _tr = enfant.lastChild;
         _tr.setJeeValues(_cmd, '.cmdAttr');
